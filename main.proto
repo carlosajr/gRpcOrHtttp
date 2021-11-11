@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+service ExecutionService {
+    rpc execute (Empty) returns (ExecutionResponse) {}
+}
+
+message Empty {}
+
+message ExecutionResponse {
+    bool exectuted = 1;
+    int32 number = 2;
+}
