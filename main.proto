@@ -1,12 +1,32 @@
 syntax = "proto3";
 
 service ExecutionService {
-    rpc execute (Empty) returns (ExecutionResponse) {}
+    rpc execute (Empty) returns (ItemResponse) {}
 }
 
 message Empty {}
 
-message ExecutionResponse {
-    bool exectuted = 1;
-    int32 number = 2;
+message ItemResponse {
+    repeated Item items = 1;
+}
+
+message Item {
+    int32 numeroUm = 1;
+    int32 numeroDois = 2;
+    int32 numeroTres = 3;
+    int32 numeroQuatro = 4;
+    int32 numeroCinco = 5;
+    int32 numeroSeis = 6;
+    int32 numeroSete = 7;
+    int32 numeroOito = 8;
+    int32 numeroNove = 9;
+    string stringUm = 10;
+    string stringDois = 11;
+    string stringTres = 12;
+    string stringQuatro = 13;
+    string stringCinco = 14;
+    string stringSeis = 15;
+    string stringSete = 16;
+    string stringOito = 17;
+    string stringNove = 18;
 }

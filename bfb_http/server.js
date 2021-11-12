@@ -3,9 +3,12 @@ const express = require('express');
 const app = express();
 const port = 3434;
 
-app.get('/bfb', (req, res) => {
-    const number = Math.floor(Math.random() * 10000);
-    return res.json({ exectuted: true, number });
+const executeService = require('../service/executeService');
+
+app.get('/bfb', async (req, res) => {
+  const data = executeService.execute();
+
+  return res.json(data);
 })
 
 app.listen(port, () => {

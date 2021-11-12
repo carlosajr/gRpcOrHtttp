@@ -5,14 +5,19 @@ const app = express();
 const port = 3333;
 
 app.get('/bff', async (req, res) => {
+  try {
     const { type } = req.query;
-    console.log(type)
     
     const client = clientResolver.resolve(type);
 
     const result = await client.execute();
 
     return res.json(result);
+  } catch (error) {
+    console.log(error)
+    return res.status(400).json({error: error.message})
+  }
+    
 })
 
 app.listen(port, () => {

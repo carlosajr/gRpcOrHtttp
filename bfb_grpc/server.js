@@ -1,17 +1,19 @@
 const grpc = require("grpc");
-
-var protoLoader = require('@grpc/proto-loader');
 const path = require('path');
+const protoLoader = require('@grpc/proto-loader');
 
 const protoObject = protoLoader.loadSync(path.resolve(__dirname, '../', 'main.proto'));
 const Execution = grpc.loadPackageDefinition(protoObject);
+
+const executeService = require('../service/executeService');
 
 const server = new grpc.Server();
 
 server.addService(Execution.ExecutionService.service, {
     execute: (_, callback) => {
-        const number = Math.floor(Math.random() * 10000);
-        callback(null, { exectuted: true, number });
+        const data = executeService.execute();
+
+        callback(null, data);
     },
 })
 

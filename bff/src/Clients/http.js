@@ -2,7 +2,7 @@ const axios = require('axios').default;
 
 class Client {
     constructor() {
-        this.client = axios.create({ baseURL: 'https://http://127.0.0.1:3434' });
+        this.client = axios.create({ baseURL: 'http://127.0.0.1:3434' });
     }
 
     async execute() {
@@ -11,8 +11,9 @@ class Client {
         const result = await this.client.get('/bfb');
         
         const time = new Date().getTime() - startDate.getTime();
+        const data = result.data;
 
-        return { result, time };
+        return { data, time };
     }
 }
 
